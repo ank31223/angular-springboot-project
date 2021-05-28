@@ -18,6 +18,13 @@ public class ClientServiceImpl implements ClientService {
 
 	@Autowired
 	private ClientRepository clientRepository;
+	
+//	@Autowired
+//	private ClientRepository1 clientRepository;
+	
+//	@Autowired
+//	private CommonRepository<Client,String> clientRepository;
+	
 	@Autowired
 	private EmployeeService employeeService;
 

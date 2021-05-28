@@ -1,11 +1,9 @@
 package com.io.springboot.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.io.springboot.dto.Client;
 import com.io.springboot.dto.ClientEmployeeResponse;
-import com.io.springboot.dto.Employee;
 
 public interface ClientService {
 	

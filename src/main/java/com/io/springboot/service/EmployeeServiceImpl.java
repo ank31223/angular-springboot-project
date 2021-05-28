@@ -15,6 +15,9 @@ import com.io.springboot.dto.EmployeeClientResponse;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+//
+//	@Autowired
+//	private CommonRepository<Employee,String> employeeRepository;
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -111,20 +114,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void removeClientFromEmployee(String employeeId, String clientId) {
 		Employee employee = employeeRepository.findById(employeeId).get();
 		int i = 0;
-		boolean flag=false;
+		boolean flag = false;
 		for (String tempId : employee.getClientIds()) {
 			if (tempId.contentEquals(clientId)) {
-				flag=true;
+				flag = true;
 				break;
 			}
 			i++;
 		}
-		
-		if(flag==true) {
+
+		if (flag == true) {
 			employee.getClientIds().remove(i);
 			employeeRepository.save(employee);
 		}
-		
+
 		clientService.removeEmployeeFromClientForEmployee(clientId, employeeId);
 	}
 
@@ -146,25 +149,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void removeClientIdFromEmployees(String clientId) {
-		
+
 		for (Employee employee : employeeRepository.findAll()) {
-			
-			int i=0;
-			boolean flag=false;
+
+			int i = 0;
+			boolean flag = false;
 			for (String tempId : employee.getClientIds()) {
-				if(tempId.contentEquals(clientId)) {
-					flag=true;
+				if (tempId.contentEquals(clientId)) {
+					flag = true;
 					break;
 				}
 				i++;
 			}
-			if(flag==true) {
+			if (flag == true) {
 				employee.getClientIds().remove(i);
 				employeeRepository.save(employee);
 			}
-			
+
 		}
-		
+
 	}
 
 }
